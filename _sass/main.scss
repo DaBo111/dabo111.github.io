@@ -400,6 +400,23 @@ $primary-color: #2563eb;
   }
 }
 
+/* Simple timeline logo mobile positioning */
+@media only screen and (max-width: 767.5px) {
+  .timeline-logo-left,
+  .timeline-logo-right {
+    position: static !important;
+    display: block !important;
+    margin: 0.5rem auto !important;
+    text-align: center !important;
+  }
+  
+  .timeline-logo-left img,
+  .timeline-logo-right img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
 /* General */
 
 html {
