@@ -1,0 +1,15 @@
+# > name: Name of your natural language
+# > weight: Describes how good you know the language - values from 1 up to 5
+#
+# Example of a Natural Language
+# - name: Language
+#   weight: 5
+
+- name: English
+  weight: 5
+
+- name: Vietnamese
+  weight: 5
+
+- name: French
+  weight: 0.5

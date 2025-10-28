@@ -1,0 +1,18 @@
+# > name: Blog post title
+# > year: Year published
+# > month: Month published (1-12)
+# > category: Category/genre of the blog (tech, science, personal, etc.)
+# > descr: Blog post description/excerpt
+# > demo: Link to the blog post
+# > tags: List of tags for the blog post
+#
+# Example of a blog entry
+# - name: My First Blog Post
+#   year: 2024
+#   month: 10
+#   category: tech
+#   descr: This is a description of my first blog post about technology.
+#   demo: https://example.com/blog/my-first-post
+#   tags:
+#     - tag: Technology
+#     - tag: Programming

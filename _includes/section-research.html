@@ -1,0 +1,98 @@
+{% if site.show_research_projects %}
+  <h1 class="title"><span>{{site.research_title}}</span></h1>
+  
+  {% if site.research_view_mode == "by_year" %}
+    <!-- Year Filter Buttons -->
+    <div class="research-filters" data-aos="fade-down">
+      <button class="filter-btn neumorphism-button active" data-year="all">All Years</button>
+      {% if site.data.projects and site.data.projects.size > 0 %}
+        {% assign research_years = site.data.projects | map: 'year' | uniq | sort | reverse %}
+        {% for year in research_years %}
+          {% if year %}
+            <button class="filter-btn neumorphism-button" data-year="{{ year }}">{{ year }}</button>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+  
+  <div class="projects-wrapper">
+    {% comment %} Simple sort by year only to avoid Liquid errors {% endcomment %}
+    {% if site.data.projects and site.data.projects.size > 0 %}
+      {% assign sorted_projects = site.data.projects | sort: 'year' | reverse %}
+    {% else %}
+      {% assign sorted_projects = false %}
+    {% endif %}
+    
+    {% if sorted_projects and sorted_projects.size > 0 %}
+      {% for project in sorted_projects %}
+      <div class="project neumorphism-card research-item" data-year="{{ project.year | default: 'unknown' }}" data-aos="zoom-in-down">
+        <!-- Top left: Icon, Type, Venue -->
+        <div class="research-header">
+          <div class="publication-info">
+            {% if project.type == 'preprint' %}
+              <span class="type-icon preprint" title="Preprint">📄</span>
+            {% elsif project.type == 'conference' %}
+              <span class="type-icon conference" title="Conference">🎪</span>
+            {% elsif project.type == 'journal' %}
+              <span class="type-icon journal" title="Journal">📖</span>
+            {% else %}
+              <span class="type-icon research" title="Research">🔬</span>
+            {% endif %}
+            <span class="type-label">{{ project.type | default: 'Research' | capitalize }}</span>
+            {% if project.venue %}
+              <span class="research-venue">{{ project.venue }}</span>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Main content area -->
+        <div class="research-content">
+          <!-- Title -->
+          <div class="name-link-wrapper">
+            <h3>{{ project.name }}</h3>
+          </div>
+          
+          <!-- Authors -->
+          {% if project.authors %}
+            <div class="research-authors">
+              {% for author in project.authors %}{{ author }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+            </div>
+          {% endif %}
+          
+          <!-- Description with expand/collapse -->
+          <div class="project-desc-wrapper">
+            <p class="project-desc">
+              <span class="desc-preview">{{ project.descr | truncatewords: 25 }}{% assign word_count = project.descr | number_of_words %}{% if word_count > 25 %}<button class="see-more-btn" onclick="toggleDescription(this)">See more</button>{% endif %}</span>
+              <span class="desc-full" style="display: none;">{{ project.descr }}{% if word_count > 25 %}<button class="see-more-btn" onclick="toggleDescription(this)">See less</button>{% endif %}</span>
+            </p>
+          </div>
+          
+          <!-- Tags -->
+          {% if project.tags %}
+            <div class="tag-wrapper">
+              {% for tag in project.tags %}
+                <span class="tag neumorphism-card">{{ tag.tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        
+        <!-- Bottom right: Paper link -->
+        {% if project.demo %}
+          <div class="research-link-bottom">
+            <a class="highlight-link paper-link" href="{{ project.demo }}" target="_blank" rel="noreferrer">
+              Paper
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    {% else %}
+      <!-- No research projects available -->
+      <div class="coming-soon-text">
+        <p>Research projects coming soon.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

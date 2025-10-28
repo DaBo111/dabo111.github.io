@@ -1,28 +1,60 @@
 <h1 class="title">{{site.skills_title}}</h1>
 
 <div id="skills">
-  <input type="radio" id="all" name="filter" checked />
-  <label class="filter-button neumorphism-button" for="all">All</label>
+  <input type="radio" id="natural-language" name="filter" checked />
+  <label class="filter-button neumorphism-button" for="natural-language">Natural Languages</label>
   <input type="radio" id="language" name="filter" />
   <label class="filter-button neumorphism-button" for="language">Languages</label>
-  <input type="radio" id="framework" name="filter" />
-  <label class="filter-button neumorphism-button" for="framework">Frameworks</label>
   <input type="radio" id="tool" name="filter" />
   <label class="filter-button neumorphism-button" for="tool">Tools</label>
 
-  {% for language in site.data.skills-languages %}
-    <div skill-type="language" skill-weight="{{language.weight}}" data-aos="zoom-in">
-      {{language.name}}
-    </div>
-  {% endfor %}
-  {% for framework in site.data.skills-frameworks %}
-    <div skill-type="framework" skill-weight="{{framework.weight}}" data-aos="zoom-in">
-      {{framework.name}}
-    </div>
-  {% endfor %}
-  {% for tool in site.data.skills-tools %}
-    <div skill-type="tool" skill-weight="{{tool.weight}}" data-aos="zoom-in">
-      {{tool.name}}
-    </div>
-  {% endfor %}
+  <div class="skills-container">
+    {% assign sorted_natural_languages = site.data.skills-natural-languages | sort: 'weight' | reverse %}
+    {% for language in sorted_natural_languages %}
+      <div class="skill-item" skill-type="natural-language" data-aos="fade-up">
+        <span class="skill-name">{{language.name}}</span>
+        <div class="skill-dots">
+          {% for i in (1..5) %}
+            {% if i <= language.weight %}
+              <span class="dot filled">●</span>
+            {% else %}
+              <span class="dot empty">○</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    
+    {% assign sorted_languages = site.data.skills-languages | sort: 'weight' | reverse %}
+    {% for language in sorted_languages %}
+      <div class="skill-item" skill-type="language" data-aos="fade-up">
+        <span class="skill-name">{{language.name}}</span>
+        <div class="skill-dots">
+          {% for i in (1..5) %}
+            {% if i <= language.weight %}
+              <span class="dot filled">●</span>
+            {% else %}
+              <span class="dot empty">○</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    
+    {% assign sorted_tools = site.data.skills-tools | sort: 'weight' | reverse %}
+    {% for tool in sorted_tools %}
+      <div class="skill-item" skill-type="tool" data-aos="fade-up">
+        <span class="skill-name">{{tool.name}}</span>
+        <div class="skill-dots">
+          {% for i in (1..5) %}
+            {% if i <= tool.weight %}
+              <span class="dot filled">●</span>
+            {% else %}
+              <span class="dot empty">○</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>

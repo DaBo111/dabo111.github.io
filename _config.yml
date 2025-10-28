@@ -2,29 +2,40 @@
 
 # GENERAL SITE SETTINGS
 # title: This will be displayed as the website's name in your browser tab.
-title: Neumorphism
+title: Dat Nguyen Tien Hoang
 # description: This will be meta HTML tag content. This can be ignored.
-description: Personal website powered by Jekyll
+description: Powered by Jekyll, theme by longpdo ~~
 # baseurl: The subpath of your site
 # > set this to "", if you renamed the repository to <user>.github.io
-baseurl: "/neumorphism"
+baseurl: ""
 
 # LANDING PAGE
 # username: This will displayed on the landing page as your name.
-username: Neumorphism
+username: Dat Nguyen Tien Hoang
 # typing_text: This will be typed before 'scroll down for more'.
 # > set this to your job title, e.g. Fullstack Developer
-typing_text: Jekyll Theme
+typing_text: Progress is never free.
+# cycling_messages: Enable cycling through multiple messages
+# > setting this to true will use the messages list below
+# > setting this to false will use the single typing_text above
+enable_cycling_messages: true
+# messages: List of messages to cycle through (only used if enable_cycling_messages is true)
+cycling_messages:
+  - "Progress is never free."
+  - "temp temp temp"
+  - "1 2 3 4"
 # email: Your E-Mail address for the email button.
-email: email@example.com
+email: tien-nguyen@ip-paris.fr
 # For every social button you want to display, set your username or userid
 # If you do not use one of the following websites, then leave it empty
 # > twitter_username:
-github_username: longpdo
-codepen_username: exampleUser
-dev_username: exampleUser
-linkedin_username: exampleUser
-twitter_username: exampleUser
+github_username: DaBo111
+codepen_username: 
+dev_username: 
+linkedin_username: dat-nguyen-tien-hoang-88402323b
+twitter_username: 
+google_scholar_id: wfUWPwIAAAAJ
+orcid_id: 0009-0006-1159-6382
 
 # ABOUT ME SECTION
 # show_aboutme_card:
@@ -34,7 +45,11 @@ show_aboutme_card: true
 # about_me_title: The will be displayed as the title in the About Me section
 about_me_title: About Me
 # about_me_description: This will be displayed under the title.
-about_me_description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. If you like this theme and want to use it for yourself, checkout the source code and the documentation at <a class="highlight-link" href="https://github.com/longpdo/neumorphism" target="_blank" rel="noreferrer"> Github </a>. You can also find me on <a class="highlight-link" href="https://jamstackthemes.dev/theme/jekyll-neumorphism/" target="_blank" rel="noreferrer">JAMstack Themes</a> and on <a class="highlight-link" href="https://jekyll-themes.com/neumorphism/" target="_blank" rel="noreferrer">Jekyll Themes</a>.
+about_me_description: Hi there! Name's Dat Nguyen Tien Hoang (Dat, /ɗaâˀt/, good luck pronouning that 😜). Just a nerd interested in autonomous, self-organized artificial swarms and decentralized multi-agent systems. Currently, I am doing a MSc in theoretical Computer Science research, specifically focusing on model checking and other formal methods for multi-agent systems.<br><br>Mathematics, physics and all things space-related also pique my interest. I also fancy playing the guitar and singing, though one would not want to be part of the audience for the sake of their auditory faculty...<br><br>I will update any future projects that I (will, hopefully) undertake on this website; also gonna post some (unhinged?) takes on various topics in the <a href="#blogs" class="highlight-link">Blog section</a> ¯\_(ツ)_/¯.
+# about_me_photo: Path to your JPG photo (relative to assets/img/) - leave empty to disable
+# > e.g. "profile.jpg" will look for assets/img/profile.jpg
+# > recommended: JPG format, 300x300px or larger, square aspect ratio works best
+about_me_photo: "v1.jpg"
 
 # SKILLS SECTION
 # show_skills_card:
@@ -53,19 +68,47 @@ show_timeline_card: true
 timeline_title: Education & Experience
 # cv_download_link: The link where you host your cv.
 # > e.g. you share your cv on your dropbox, then add the dropbox link here
-cv_download_link: https://example.com/
+cv_download_link: https://youtu.be/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ
 
-# PROJECTS SECTION
-# show_projects_card:
-# > setting this to true, will display the Projects section
-# > setting this to false, will omit the Projects section
-show_projects_card: true
-# show_projects:
+# RESEARCH SECTION (formerly Projects)
+# show_research_card:
+# > setting this to true, will display the Research section
+# > setting this to false, will omit the Research section
+show_research_card: true
+# show_research_projects:
 # > setting this to true, will display your listed projects in _data/projects.yml
 # > setting this to false, will omit your listed projects
-show_projects: true
-# projects_title: The will be displayed as the title of your projects
-projects_title: Projects
+show_research_projects: true
+# research_title: The will be displayed as the title of your research projects
+research_title: Research
+# research_view_mode: Display mode for research projects
+# > "all" - display all research projects together
+# > "by_year" - group research projects by year with filters
+research_view_mode: "by_year"
+# research_default_year: Default year to show when research_view_mode is "by_year"
+# > Set to "all" to show all years by default, or specify a year like "2024"
+research_default_year: "all"
+
+# BLOGS SECTION
+# show_blogs_card:
+# > setting this to true, will display the Blogs section
+# > setting this to false, will omit the Blogs section
+show_blogs_card: true
+# blogs_title: The will be displayed as the title of your blogs section
+blogs_title: Blogs
+# blogs_view_mode: Display mode for blogs
+# > "all" - display all blogs together
+# > "by_year" - group blogs by year with filters
+blogs_view_mode: "by_year"
+# blogs_default_year: Default year to show when blogs_view_mode is "by_year"
+# > Set to "all" to show all years by default, or specify a year like "2024"
+blogs_default_year: "all"
+
+# OPEN SOURCE PROJECTS SECTION
+# show_opensource_card:
+# > setting this to true, will display the Open Source Projects section
+# > setting this to false, will omit the Open Source Projects section
+show_opensource_card: true
 # show_os_projects:
 # > setting this to true, will display your public projects on github
 # > setting this to false, will omit your public projects on github
@@ -81,12 +124,12 @@ show_contact_card: true
 # contact_title: The will be displayed as the title in the Contact section
 contact_title: Contact
 # contact_description: This will be displayed under the title.
-contact_description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. If you like this theme and want to use it for yourself, checkout the source code and the documentation at <a class="highlight-link" href="https://github.com/longpdo/neumorphism" target="_blank" rel="noreferrer"> Github </a>.
+contact_description: If you want to get in touch, feel free to reach out via email or connect with me on LinkedIn 🥺!
 
 # GITHUB-METADATA
 # Set this to your forked repository
 # > e.g. <user>/<user>.github.io
-repository: longpdo/neumorphism
+repository: DaBo111/dabo111.github.io
 projects:
   # sortby:
   # > set this to pushed, if you want to sort your github repositories by time.
@@ -103,6 +146,7 @@ projects:
     forks: true
     # projects: A list of the repository names you want to exclude from the listing.
     projects:
+    - Wivace2024-EmergentNaming
     # - repo1-to-be-excluded
     # - repo2-to-be-excluded
 
@@ -110,7 +154,7 @@ projects:
 # Set the id, if you want to track your website with Google Analytics
 # > set this to "", if you do not want to track with Google Analytics
 google-analytics:
-  id: "UA-158757509-2"
+  id: "G-QHH0RV7Y0P"
 
 ### END OF VALUES YOU SHOULD CHANGE ###
 

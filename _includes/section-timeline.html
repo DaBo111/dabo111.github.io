@@ -23,6 +23,13 @@
                 <span class="time neumorphism-card">{{event.date}}</span>
               </span>
             </div>
+            {% if event.logo %}
+              <div class="timeline-logo-right">
+                <img src="{{ '/assets/img/' | append: event.logo | prepend: site.baseurl }}" 
+                     alt="{{ event.title }} logo"
+                     onerror="this.parentElement.style.display='none'">
+              </div>
+            {% endif %}
             <div class="desc neumorphism-card" data-aos="zoom-in-right">
               {{event.subtitle}}
               {% if event.tags %}
@@ -51,6 +58,13 @@
                 <span class="time neumorphism-card">{{event.date}}</span>
               </span>
             </div>
+            {% if event.logo %}
+              <div class="timeline-logo-left">
+                <img src="{{ '/assets/img/' | append: event.logo | prepend: site.baseurl }}" 
+                     alt="{{ event.title }} logo"
+                     onerror="this.parentElement.style.display='none'">
+              </div>
+            {% endif %}
             <div class="desc neumorphism-card" data-aos="zoom-in-left">
               {{event.subtitle}}
               {% if event.tags %}

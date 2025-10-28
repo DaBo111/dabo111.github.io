@@ -1,33 +1,26 @@
-# > name: Name of your project
-# > descr: Description of your project
-# > demo: Link to your project
-# > tags: List of technologies you used in your projects
+# > name: Name of your research project/publication
+# > descr: Description of your research
+# > demo: Link to your project/paper (optional)
+# > type: Type of publication - "preprint", "conference", or "journal"
+# > year: Publication year (YYYY format)
+# > month: Publication month (MM format, optional - for more precise sorting)
+# > venue: Conference/Journal name (optional)
+# > authors: List of authors (optional)
+# > tags: List of research areas/technologies
 #
-# Example of a project
-# - name: project X
-#   descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-#   demo: https://example.com/
-#   tags:
-#     - tag: MongoDB
-#     - tag: Express
-#     - tag: AngularJS
-#     - tag: Node
 
-- name: project X
-  descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-  demo: https://example.com/
+- name: "Emergent Naming System in an Unknown Dynamic Environment: A Collective Perception Scenario"
+  descr: "Best-of-n problems have been rigorously studied in the context of swarm intelligence. However, most solutions to this problem rely on a series of assumptions such as prior knowledge about the number or features of available options. In this study, we investigate a collective perception task with no prior knowledge about option features, in a dynamic environment. The added constraint renders previous approaches impractical, as robots are no longer able to use option features to identify them when communicating. To resolve this problem, we propose a novel probabilistic Naming Game routine that allows agents to converge on words that uniquely identify such features. We also propose a new quality estimation method that is compatible with the proposed Naming Game routine and easier to optimise. We compare the proposed approach with two baselines: decision convergence without communication, and decision convergence with pre-existing identifiers. We perform scalability tests for larger swarm sizes in larger environments. Our findings indicate that swarms utilising the probabilistic Naming Game to interpret neighbours’ communication signals for the purpose of quality estimation generally performed better than swarms that do not communicate and that this behaviour is relatively scalable. We also found that swarms using communication suffer from social inertia, that impacts the probabilistic Naming Game swarms less than swarms with prior environmental information."
+  demo: https://rdcu.be/exong
+  type: "conference"
+  year: 2024
+  month: 09
+  venue: "WIVACE 2024"
+  authors: ["Dat Nguyen Tien Hoang", "Nicolas Cambier"]
   tags:
-    - tag: MongoDB
-    - tag: Express
-    - tag: AngularJS
-    - tag: Node
+    - tag: Swarm Intelligence
+    - tag: Collective Perception
+    - tag: Naming Game
 
-- name: project Y
-  descr: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-  demo: https://example.com/
-  tags:
-    - tag: Python
-    - tag: Django
 
-- name: project Z
-  descr: "You can also set a project without demo link and no tags"
+

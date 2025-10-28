@@ -2,6 +2,7 @@
 # > title-url: Link to your timeline entry, university or work place
 # > date: Time span
 # > subtitle: The description under the title
+# > logo: Path to logo image (relative to assets/img/) - optional
 # > tags: List of tags you want to associate with the entry
 # > timeline-side: The side on which you want to display the entry: left or right
 
@@ -10,6 +11,7 @@
 #   title-url: https://example.com/
 #   date: Sep 2019 - Present
 #   subtitle: Fullstack Developer
+#   logo: "airbnb-logo.svg"
 #   tags:
 #     - tag: React
 #     - tag: Javascript
@@ -17,45 +19,61 @@
 #     - tag: Rails
 #   timeline-side: right
 
-- title: airbnb
-  title-url: https://example.com/
-  date: Sep 2019 - Present
-  subtitle: Fullstack Developer
+- title: Institut Polytechnique de Paris
+  title-url: https://www.ip-paris.fr/en
+  date: 2025 - Present
+  subtitle: PhD Track Data & AI
+  logo: "ip-paris-logo.svg"
   tags:
-    - tag: React
-    - tag: Javascript
-    - tag: Ruby
-    - tag: Rails
-  timeline-side: right
-
-- title: Google
-  title-url: https://example.com/
-  date: Mar 2019 - Sep 2019
-  subtitle: Software Engineer as Intern
-  tags:
-    - tag: Flutter
-    - tag: Dart
-    - tag: Keycloak
-  timeline-side: right
-
-- title: Super University
-  title-url: https://example.com/
-  date: 2017 - 2019
-  subtitle: M.Sc. Computer Science
+    - tag: Formal Methods
+    - tag: Multi-Agent Systems
   timeline-side: left
 
-- title: Facebook
-  title-url: https://example.com/
-  date: Sep 2017 - Mar 2019
-  subtitle: Front-End Developer as Intern
+- title: Ecole Polytechnique
+  title-url: https://www.polytechnique.edu/en
+  date: 2025 - Present
+  subtitle: M1 MPRI
+  logo: "polytechnique-logo.svg"
   tags:
-    - tag: React
-    - tag: Node
-    - tag: Javascript
+    - tag: Computer Science
+    - tag: Applied Mathematics
+  timeline-side: left
+
+- title: Samotics
+  title-url: https://samotics.com/about
+  date: Feb 2025 - Aug 2025
+  subtitle: Data Scientist
+  logo: "samotics-logo.jpeg"
+  tags:
+    - tag: Anomaly Detection
+    - tag: Machine Learning
   timeline-side: right
 
-- title: Super University
-  title-url: https://example.com/
-  date: 2014 - 2017
-  subtitle: B.A. Computer Science
+- title: Samotics
+  title-url: https://samotics.com/about
+  date: Nov 2024 - Jan 2025
+  subtitle: Data Analyst Intern - Electrical Signature Analysis
+  logo: "samotics-logo.jpeg"
+  tags:
+    - tag: Data Analysis
+    - tag: Data Visualization
+    - tag: Signal Processing
+  timeline-side: right
+
+- title: Vrije Universiteit Amsterdam
+  title-url: https://vu.nl/
+  date: 2022 - 2024
+  subtitle: Teaching Assistant
+  logo: "vu-amsterdam-logo.svg"
+  tags:
+    - tag: Mini-lectures
+    - tag: Workgroups
+    - tag: Grading
+  timeline-side: right
+
+- title: Vrije Universiteit Amsterdam
+  title-url: https://vu.nl/
+  date: 2021 - 2024
+  subtitle: B.Sc. Artificial Intelligence
+  logo: "vu-amsterdam-logo.svg"
   timeline-side: left

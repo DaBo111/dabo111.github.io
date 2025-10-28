@@ -1,0 +1,96 @@
+{% if site.show_blogs_card %}
+  <h1 class="title"><span>{{site.blogs_title}}</span></h1>
+  
+  {% if site.blogs_view_mode == "by_year" %}
+    <!-- Category Filter Buttons -->
+    <div class="blogs-filters category-filters" data-aos="fade-down">
+      <button class="filter-btn neumorphism-button active" data-category="all">All Categories</button>
+      {% if site.data.blogs and site.data.blogs.size > 0 %}
+        {% assign blog_categories = site.data.blogs | map: 'category' | uniq | sort %}
+        {% for category in blog_categories %}
+          {% if category %}
+            <button class="filter-btn neumorphism-button" data-category="{{ category }}">{{ category | capitalize }}</button>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+  
+  <div class="projects-wrapper">
+    {% comment %} Simple sort by year only to avoid Liquid errors {% endcomment %}
+    {% if site.data.blogs and site.data.blogs.size > 0 %}
+      {% assign sorted_blogs = site.data.blogs | sort: 'year' | reverse %}
+    {% else %}
+      {% assign sorted_blogs = false %}
+    {% endif %}
+    
+    {% if sorted_blogs and sorted_blogs.size > 0 %}
+      {% for blog in sorted_blogs %}
+        <div class="project neumorphism-card blog-item" data-year="{{ blog.year | default: 'unknown' }}" data-category="{{ blog.category | default: 'unknown' }}" data-aos="zoom-in-down">
+          <!-- Top left: Icon, Category -->
+          <div class="blog-header">
+            <div class="publication-info">
+              {% if blog.category == 'tech' %}
+                <span class="type-icon tech" title="Technology">💻</span>
+              {% elsif blog.category == 'science' %}
+                <span class="type-icon science" title="Science">🔬</span>
+              {% elsif blog.category == 'personal' %}
+                <span class="type-icon personal" title="Personal">📝</span>
+              {% elsif blog.category == 'philosophy' %}
+                <span class="type-icon philosophy" title="Philosophy">🤔</span>
+              {% elsif blog.category == 'tutorial' %}
+                <span class="type-icon tutorial" title="Tutorial">📚</span>
+              {% elsif blog.category == 'review' %}
+                <span class="type-icon review" title="Review">⭐</span>
+              {% else %}
+                <span class="type-icon blog" title="Blog">📖</span>
+              {% endif %}
+              <span class="type-label">{{ blog.category | default: 'Blog' | capitalize }}</span>
+              {% if blog.year and blog.month %}
+                <span class="blog-date">{{ blog.year }}-{{ '%02d' | printf: blog.month }}</span>
+              {% elsif blog.year %}
+                <span class="blog-date">{{ blog.year }}</span>
+              {% endif %}
+            </div>
+          </div>
+          
+          <!-- Title -->
+          <div class="name-link-wrapper">
+            <h3>{{ blog.name }}</h3>
+          </div>
+          
+          <!-- Description with expand/collapse -->
+          <div class="project-desc-wrapper">
+            <p class="project-desc">
+              <span class="desc-preview">{{ blog.descr | truncatewords: 25 }}{% assign word_count = blog.descr | number_of_words %}{% if word_count > 25 %}<button class="see-more-btn" onclick="toggleDescription(this)">See more</button>{% endif %}</span>
+              <span class="desc-full" style="display: none;">{{ blog.descr }}{% if word_count > 25 %}<button class="see-more-btn" onclick="toggleDescription(this)">See less</button>{% endif %}</span>
+            </p>
+          </div>
+          
+          <!-- Link -->
+          {% if blog.demo %}
+            <div class="blog-link">
+              <a class="highlight-link" href="{{ blog.demo }}" target="_blank" rel="noreferrer">
+                Read More
+              </a>
+            </div>
+          {% endif %}
+          
+          <!-- Tags -->
+          {% if blog.tags %}
+            <div class="tag-wrapper">
+              {% for tag in blog.tags %}
+                <span class="tag neumorphism-card">{{ tag.tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- No blogs available -->
+      <div class="coming-soon-text">
+        <p>Coming soon.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

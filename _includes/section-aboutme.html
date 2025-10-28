@@ -1,2 +1,9 @@
 <h1 class="title">{{site.about_me_title}}</h1>
-<p class="description" data-aos="fade-down">{{site.about_me_description}}</p>
+<div class="about-me-content" data-aos="fade-down">
+  {% if site.about_me_photo and site.about_me_photo != "" %}
+    <img src="{{ '/assets/img/' | append: site.about_me_photo | prepend: site.baseurl }}" 
+         alt="About me photo" 
+         class="about-me-photo">
+  {% endif %}
+  <p class="description">{{site.about_me_description}}</p>
+</div>

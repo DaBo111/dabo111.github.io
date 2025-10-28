@@ -541,6 +541,12 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
   <symbol id="google" viewBox="0 0 488 512">
     <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
   </symbol>
+  <symbol id="google-scholar" viewBox="0 0 512 512">
+    <path d="M256 411.12L0 202.667 256 0z" fill="currentColor"/>
+    <path d="M256 411.12l256-208.453L256 0z" fill="currentColor"/>
+    <circle cx="256" cy="362.667" r="149.333" fill="currentColor"/>
+    <path d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z" fill="currentColor"/>
+  </symbol>
   <symbol id="google-drive" viewBox="0 0 512 512">
     <path d="M339 314.9L175.4 32h161.2l163.6 282.9H339zm-137.5 23.6L120.9 480h310.5L512 338.5H201.5zM154.1 67.4L0 338.5 80.6 480 237 208.8 154.1 67.4z"></path>
   </symbol>

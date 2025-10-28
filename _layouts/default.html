@@ -23,37 +23,112 @@
 
 <body>
   <div id="preloader">
-    <div class="load">
-      <hr />
-      <hr />
-      <hr />
-      <hr />
+    <div class="graph-loader">
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Edges (connections) -->
+        <line x1="50" y1="50" x2="100" y2="100" class="edge" />
+        <line x1="100" y1="100" x2="200" y2="80" class="edge" />
+        <line x1="200" y1="80" x2="250" y2="50" class="edge" />
+        <line x1="100" y1="100" x2="150" y2="150" class="edge" />
+        <line x1="150" y1="150" x2="200" y2="120" class="edge" />
+        <line x1="200" y1="120" x2="200" y2="80" class="edge" />
+        <line x1="50" y1="50" x2="80" y2="30" class="edge" />
+        <line x1="80" y1="30" x2="150" y2="40" class="edge" />
+        <line x1="150" y1="40" x2="200" y2="80" class="edge" />
+        <line x1="150" y1="150" x2="220" y2="150" class="edge" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="50" r="8" class="node" id="node-1" data-wave="0" />
+        <circle cx="100" cy="100" r="8" class="node" id="node-2" data-wave="1" />
+        <circle cx="200" cy="80" r="8" class="node" id="node-3" data-wave="2" />
+        <circle cx="250" cy="50" r="8" class="node" id="node-4" data-wave="3" />
+        <circle cx="150" cy="150" r="8" class="node" id="node-5" data-wave="2" />
+        <circle cx="200" cy="120" r="8" class="node" id="node-6" data-wave="3" />
+        <circle cx="80" cy="30" r="8" class="node" id="node-7" data-wave="1" />
+        <circle cx="150" cy="40" r="8" class="node" id="node-8" data-wave="2" />
+        <circle cx="220" cy="150" r="8" class="node" id="node-9" data-wave="3" />
+      </svg>
     </div>
   </div>
+  
+  <!-- Top Left Name/Logo -->
+  <div class="top-left-logo">
+    <a href="#landing" class="logo-link">{{site.username}}</a>
+  </div>
+  
+  <!-- Floating Navigation Menu -->
+  <nav id="floating-nav" class="floating-nav">
+    <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" aria-label="Scroll left">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+    </button>
+    <div class="nav-menu-wrapper">
+      <ul class="nav-menu">
+        {%if site.show_aboutme_card %}
+          <li><a href="#about" class="nav-link">About</a></li>
+        {% endif %}
+        {%if site.show_timeline_card %}
+          <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        {% endif %}
+        {%if site.show_research_card %}
+          <li><a href="#research" class="nav-link">Research</a></li>
+        {% endif %}
+        {%if site.show_skills_card %}
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+        {% endif %}
+        {%if site.show_opensource_card %}
+          <li><a href="#opensource" class="nav-link">Open Source</a></li>
+        {% endif %}
+        {%if site.show_blogs_card %}
+          <li><a href="#blogs" class="nav-link">Blogs</a></li>
+        {% endif %}
+        {%if site.show_contact_card %}
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <button class="nav-arrow nav-arrow-right" id="nav-arrow-right" aria-label="Scroll right">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    </button>
+  </nav>
+  
   {% include landing-page.html %}
   <div class="layout">
     {%if site.show_aboutme_card %}
-      <section class="card neumorphism-card-big">
+      <section id="about" class="card neumorphism-card-big">
         {% include section-aboutme.html %}
       </section>
     {% endif %}
-    {%if site.show_skills_card %}
-      <section class="card neumorphism-card-big">
-        {% include section-skills.html %}
-      </section>
-    {% endif %}
     {%if site.show_timeline_card %}
-      <section class="card neumorphism-card-big">
+      <section id="timeline" class="card neumorphism-card-big">
         {% include section-timeline.html %}
       </section>
     {% endif %}
-    {%if site.show_projects_card %}
-      <section class="card neumorphism-card-big">
-        {% include section-projects.html %}
+    {%if site.show_research_card %}
+      <section id="research" class="card neumorphism-card-big">
+        {% include section-research.html %}
+      </section>
+    {% endif %}
+    {%if site.show_skills_card %}
+      <section id="skills" class="card neumorphism-card-big">
+        {% include section-skills.html %}
+      </section>
+    {% endif %}
+    {%if site.show_opensource_card %}
+      <section id="opensource" class="card neumorphism-card-big">
+        {% include section-opensource.html %}
+      </section>
+    {% endif %}
+    {%if site.show_blogs_card %}
+      <section id="blogs" class="card neumorphism-card-big">
+        {% include section-blogs.html %}
       </section>
     {% endif %}
     {%if site.show_contact_card %}
-    <section class="card neumorphism-card-big">
+    <section id="contact" class="card neumorphism-card-big">
       {% include section-contact.html %}
     </section>
     {% endif %}
