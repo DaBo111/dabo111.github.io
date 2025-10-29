@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dabo111.github.io/sitemap.xml
+
+# Disallow crawling of certain directories if needed
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /_sass/
+Disallow: /_js/
+
+# Allow crawling of important assets
+Allow: /assets/img/
+Allow: /assets/favicon/

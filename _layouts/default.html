@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
   <meta charset="utf-8">
@@ -7,7 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
+    <meta name="description" content="{{ site.description }}">
+  <meta name="keywords" content="portfolio, Dat Nguyen Tien Hoang, computer science, research, blog, skills, timeline, open source">
+  <meta name="author" content="Dat Nguyen Tien Hoang">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dabo111.github.io/">
+    <meta property="og:image" content="https://dabo111.github.io/assets/img/v1.jpg">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ site.title }}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="https://dabo111.github.io/assets/img/v1.jpg">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dat Nguyen Tien Hoang",
+      "url": "https://dabo111.github.io/",
+      "image": "https://dabo111.github.io/assets/img/v1.jpg",
+      "sameAs": [
+        "https://github.com/DaBo111",
+        "https://www.linkedin.com/in/dat-nguyen-tien-hoang-88402323b/",
+        "https://www.instagram.com/d.daboiii/",
+        "https://www.facebook.com/ddat.nguyyen",
+        "https://scholar.google.com/citations?user=wfUWPwIAAAAJ",
+        "https://orcid.org/0009-0006-1159-6382"
+      ],
+      "jobTitle": "Computer Science / Data AI student",
+      "description": "{{ site.description }}"
+    }
+    </script>
 
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/favicon/apple-touch-icon.png" | prepend: site.baseurl }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/favicon/favicon-32x32.png" | prepend: site.baseurl }}">

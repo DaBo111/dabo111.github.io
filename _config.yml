@@ -4,10 +4,12 @@
 # title: This will be displayed as the website's name in your browser tab.
 title: Dat Nguyen Tien Hoang
 # description: This will be meta HTML tag content. This can be ignored.
-description: Powered by Jekyll, theme by longpdo ~~
+description: "Computer Science / Data AI student specializing in multi-agent systems, formal methods, and autonomous swarms. Portfolio showcasing research, skills, projects and blogs."
 # baseurl: The subpath of your site
 # > set this to "", if you renamed the repository to <user>.github.io
 baseurl: ""
+# url: The base hostname & protocol for your site
+url: "https://dabo111.github.io"
 
 # LANDING PAGE
 # username: This will displayed on the landing page as your name.
