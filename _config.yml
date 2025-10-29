@@ -24,7 +24,7 @@ enable_cycling_messages: true
 # messages: List of messages to cycle through (only used if enable_cycling_messages is true)
 cycling_messages:
   - "Progress is never free."
-  - "Tomorrow comes | We continue."
+  - "For those who come after."
 # email: Your E-Mail address for the email button.
 email: tien.nguyen@ip-paris.fr
 # For every social button you want to display, set your username or userid
