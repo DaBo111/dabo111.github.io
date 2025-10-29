@@ -529,7 +529,7 @@ a {
     height: auto;
     object-fit: contain;
     border-radius: 12px;
-    margin: 0 1.5rem 1.5rem 0; // Increased bottom margin
+    margin: 0 1.5rem 1rem 0; /* Reduced bottom margin to allow text closer underneath */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
@@ -542,7 +542,8 @@ a {
   
   .description {
     text-align: justify;
-    overflow: hidden; // Ensures proper text wrapping
+    /* Ensure text flows around and under the floated photo */
+    line-height: 1.6;
   }
 }
 
