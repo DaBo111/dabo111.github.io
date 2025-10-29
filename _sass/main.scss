@@ -252,7 +252,7 @@ $primary-color: #2563eb;
       
       h1 {
         font-size: 1.3rem; // Decreased from 1.5rem for mobile
-        font-family: cursive;
+        font-family: "Comic Sans MS", cursive; // Force Comic Sans MS to match desktop
         font-style: italic;
         font-weight: 300; // Light weight to avoid bold appearance
       }
@@ -397,6 +397,34 @@ $primary-color: #2563eb;
     .skill-dots {
       gap: 0.25rem;
     }
+  }
+}
+
+/* Rotate logo vertically when navigation might overlap (below 1200px) */
+@media only screen and (max-width: 1199.99px) {
+  .top-left-logo {
+    /* Position at middle-left edge */
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    
+    /* Make container vertical */
+    writing-mode: vertical-lr;
+    padding: 1rem 0.5rem;
+    border-radius: 0 12px 12px 0;
+    z-index: 1001;
+    
+    /* Override hover to maintain vertical position */
+    &:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+  }
+  
+  .logo-link {
+    /* Vertical text layout */
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    white-space: nowrap;
   }
 }
 
@@ -710,7 +738,7 @@ a {
     
     h1 {
       margin: 0;
-      font-family: cursive;
+      font-family: "Comic Sans MS", cursive; // Force Comic Sans MS for consistency across all devices
       font-style: italic;
       font-weight: 300; // Light weight to avoid bold appearance
       font-size: 1.6rem; // Decreased from default 2rem
