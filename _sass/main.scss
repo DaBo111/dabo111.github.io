@@ -575,17 +575,98 @@ $primary-color: #2563eb;
   flex: 1; // Take remaining space after header
   background: white;
   border-radius: 0 0 16px 16px;
-  overflow: hidden; // No scrolling on container
-  display: flex;
-  flex-direction: column;
+  overflow: auto; // Allow scrolling within container
+  min-height: 500px; // Minimum height
+  max-height: calc(85vh - 100px); // Account for header height
+  padding: 24px;
 }
 
-#bug-report-iframe {
+#bug-report-form {
   width: 100%;
-  height: 100%;
-  border: none;
-  background: white;
-  flex: 1; // Take all available space
+  
+  .form-group {
+    margin-bottom: 20px;
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      
+      // Neumorphism effect
+      box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+      
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        background: #fff;
+        box-shadow: 
+          inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+          inset -2px -2px 4px rgba(255, 255, 255, 0.95),
+          0 0 0 3px rgba(0, 123, 255, 0.1);
+      }
+      
+      &::placeholder {
+        color: #999;
+      }
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+  }
+  
+  .form-actions {
+    text-align: center;
+    margin-top: 24px;
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      // Neumorphism effect for button
+      box-shadow: 
+        4px 4px 12px rgba(0, 123, 255, 0.3),
+        -4px -4px 12px rgba(255, 255, 255, 0.1);
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          6px 6px 16px rgba(0, 123, 255, 0.4),
+          -6px -6px 16px rgba(255, 255, 255, 0.2);
+      }
+      
+      &:active {
+        transform: translateY(0);
+        box-shadow: 
+          2px 2px 6px rgba(0, 123, 255, 0.3),
+          -2px -2px 6px rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
 }
 
 /* General */

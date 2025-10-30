@@ -144,7 +144,7 @@ projects:
     # forks:
     # > setting this to true, will exclude forked repositories
     # > setting this to false, will also display forked repositories
-    forks: true
+    forks: false
     # projects: A list of the repository names you want to exclude from the listing.
     projects:
     - Wivace2024-EmergentNaming

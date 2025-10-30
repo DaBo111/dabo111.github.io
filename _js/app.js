@@ -526,12 +526,14 @@ function initBugReportModal() {
   const bugReportBtn = document.getElementById('bug-report-btn');
   const bugModal = document.getElementById('bug-report-modal');
   const bugModalClose = document.getElementById('bug-modal-close');
+  const bugForm = document.getElementById('bug-report-form');
 
   if (!bugReportBtn || !bugModal || !bugModalClose) {
     return; // Elements don't exist
   }
 
   let originalBodyOverflow = '';
+  let formSubmissionInProgress = false;
 
   // Open modal
   bugReportBtn.addEventListener('click', function() {
@@ -539,14 +541,183 @@ function initBugReportModal() {
     originalBodyOverflow = document.body.style.overflow || '';
     bugModal.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Create the hidden iframe when modal opens
+    createHiddenIframe();
   });
+
+  // Handle form submission
+  if (bugForm) {
+    bugForm.addEventListener('submit', function(e) {
+      formSubmissionInProgress = true;
+      
+      // Show loading state after a brief delay to allow form submission
+      setTimeout(function() {
+        showLoadingMessage();
+      }, 200);
+      
+      // Fallback timeout in case iframe doesn't load
+      setTimeout(function() {
+        if (formSubmissionInProgress) {
+          formSubmissionInProgress = false;
+          handleFormSubmit();
+        }
+      }, 8000); // 8 second fallback
+    });
+  }
+
+  function createHiddenIframe() {
+    // Remove any existing iframe
+    const existingIframe = document.querySelector('iframe[name="hidden_iframe"]');
+    if (existingIframe) {
+      existingIframe.remove();
+    }
+    
+    // Create new iframe
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hidden_iframe';
+    iframe.style.display = 'none';
+    iframe.onload = function() {
+      // Only trigger success if form submission is in progress
+      if (formSubmissionInProgress) {
+        formSubmissionInProgress = false;
+        setTimeout(handleFormSubmit, 300);
+      }
+    };
+    
+    // Add iframe to body
+    document.body.appendChild(iframe);
+  }
+
+  function showLoadingMessage() {
+    const formContainer = document.querySelector('.bug-form-container');
+    if (formContainer) {
+      // Remove any existing loading overlay first
+      const existingOverlay = document.getElementById('loading-overlay');
+      if (existingOverlay) {
+        existingOverlay.remove();
+      }
+      
+      // Create loading overlay instead of replacing form
+      const loadingOverlay = document.createElement('div');
+      loadingOverlay.id = 'loading-overlay';
+      loadingOverlay.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 20px;
+      `;
+      loadingOverlay.innerHTML = `
+        <div style="font-size: 48px; margin-bottom: 20px;">🫡</div>
+        <h3 style="margin-bottom: 16px; color: #333;">Submitting Bug Report...</h3>
+        <p style="color: #666;">Please wait while I try to make google form works...</p>
+      `;
+      
+      // Make sure the form container has relative positioning
+      formContainer.style.position = 'relative';
+      formContainer.appendChild(loadingOverlay);
+    }
+  }
 
   // Close modal function
   function closeModal() {
     bugModal.style.display = 'none';
     // Restore the original overflow value
     document.body.style.overflow = originalBodyOverflow;
+    
+    // Reset form submission flag
+    formSubmissionInProgress = false;
+    
+    // Clean up loading overlay
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+      loadingOverlay.remove();
+    }
+    
+    // Reset the modal content to show the form again
+    resetModalContent();
+    
+    // Clean up any hidden iframes
+    const hiddenIframe = document.querySelector('iframe[name="hidden_iframe"]');
+    if (hiddenIframe) {
+      hiddenIframe.remove();
+    }
   }
+
+  function resetModalContent() {
+    const formContainer = document.querySelector('.bug-form-container');
+    if (formContainer) {
+      formContainer.innerHTML = `
+        <form id="bug-report-form" 
+              action="https://docs.google.com/forms/d/e/1FAIpQLSfJ4cnpqkvAz24haw1alxDpPjuRSV-lHZz8BEMdh4HZ8e-y6A/formResponse" 
+              method="POST" 
+              target="hidden_iframe">
+          
+          <div class="form-group">
+            <label for="bug-title">Bug Title *</label>
+            <input type="text" 
+                   id="bug-title" 
+                   name="entry.1026331850" 
+                   placeholder="Brief description of the bug" 
+                   required>
+          </div>
+          
+          <div class="form-group">
+            <label for="bug-description">Bug Description *</label>
+            <textarea id="bug-description" 
+                      name="entry.318105923" 
+                      placeholder="Detailed description of what happened, what you expected, and steps to reproduce" 
+                      rows="4" 
+                      required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="bug-details">Other Details</label>
+            <textarea id="bug-details" 
+                      name="entry.1650897734" 
+                      placeholder="Browser, device, or any other relevant information (optional)" 
+                      rows="3"></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">Submit Bug Report</button>
+          </div>
+        </form>
+      `;
+      
+      // Re-attach form event listener
+      const newForm = document.getElementById('bug-report-form');
+      if (newForm) {
+        newForm.addEventListener('submit', function(e) {
+          formSubmissionInProgress = true;
+          
+          // Show loading state after a brief delay to allow form submission
+          setTimeout(function() {
+            showLoadingMessage();
+          }, 200);
+          
+          // Fallback timeout in case iframe doesn't load
+          setTimeout(function() {
+            if (formSubmissionInProgress) {
+              formSubmissionInProgress = false;
+              handleFormSubmit();
+            }
+          }, 8000); // 8 second fallback
+        });
+      }
+    }
+  }
+
+  // Make closeModal globally accessible for the iframe onload
+  window.closeBugModal = closeModal;
 
   // Close modal events
   bugModalClose.addEventListener('click', closeModal);
@@ -564,4 +735,32 @@ function initBugReportModal() {
       closeModal();
     }
   });
+}
+
+// Global function to handle form submission success
+function handleFormSubmit() {
+  // Remove loading overlay first
+  const loadingOverlay = document.getElementById('loading-overlay');
+  if (loadingOverlay) {
+    loadingOverlay.remove();
+  }
+  
+  const formContainer = document.querySelector('.bug-form-container');
+  if (formContainer) {
+    formContainer.innerHTML = `
+      <div style="text-align: center; padding: 40px;">
+        <div style="font-size: 48px; margin-bottom: 20px;">👀</div>
+        <h3 style="margin-bottom: 16px; color: #333;">Bug Report Submitted!</h3>
+        <p style="margin-bottom: 20px; color: #666;">Thank you for your feedback! I promise to make an effort to fix it 🙂‍↕️.</p>
+        <p style="color: #888; font-size: 14px;">This modal will close automatically in 3 seconds.</p>
+      </div>
+    `;
+    
+    // Auto-close modal after 3 seconds
+    setTimeout(function() {
+      if (window.closeBugModal) {
+        window.closeBugModal();
+      }
+    }, 3000);
+  }
 }

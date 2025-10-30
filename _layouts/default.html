@@ -127,14 +127,41 @@
         <button class="bug-modal-close" id="bug-modal-close">&times;</button>
       </div>
       <div class="bug-form-container">
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfJ4cnpqkvAz24haw1alxDpPjuRSV-lHZz8BEMdh4HZ8e-y6A/viewform?embedded=true" 
-          id="bug-report-iframe"
-          frameborder="0" 
-          marginheight="0" 
-          marginwidth="0">
-          Loading...
-        </iframe>
+        <form id="bug-report-form" 
+              action="https://docs.google.com/forms/d/e/1FAIpQLSfJ4cnpqkvAz24haw1alxDpPjuRSV-lHZz8BEMdh4HZ8e-y6A/formResponse" 
+              method="POST" 
+              target="hidden_iframe">
+          
+          <div class="form-group">
+            <label for="bug-title">Bug Title *</label>
+            <input type="text" 
+                   id="bug-title" 
+                   name="entry.1026331850" 
+                   placeholder="Brief description of the bug" 
+                   required>
+          </div>
+          
+          <div class="form-group">
+            <label for="bug-description">Bug Description *</label>
+            <textarea id="bug-description" 
+                      name="entry.318105923" 
+                      placeholder="Detailed description of what happened, what you expected, and steps to reproduce" 
+                      rows="4" 
+                      required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="bug-details">Other Details</label>
+            <textarea id="bug-details" 
+                      name="entry.1650897734" 
+                      placeholder="Browser, device, or any other relevant information (optional)" 
+                      rows="3"></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">Submit Bug Report</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
