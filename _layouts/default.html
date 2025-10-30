@@ -112,6 +112,33 @@
     <a href="#landing" class="logo-link">{{site.username}}</a>
   </div>
   
+  <!-- Bug Report Button -->
+  <div class="bug-report-button">
+    <button id="bug-report-btn" title="Report a bug or issue">
+      🐛
+    </button>
+  </div>
+  
+  <!-- Bug Report Modal -->
+  <div id="bug-report-modal" class="bug-modal">
+    <div class="bug-modal-content">
+      <div class="bug-modal-header">
+        <h2>🐛 Report a Bug</h2>
+        <button class="bug-modal-close" id="bug-modal-close">&times;</button>
+      </div>
+      <div class="bug-form-container">
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfJ4cnpqkvAz24haw1alxDpPjuRSV-lHZz8BEMdh4HZ8e-y6A/viewform?embedded=true" 
+          id="bug-report-iframe"
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0">
+          Loading...
+        </iframe>
+      </div>
+    </div>
+  </div>
+  
   <!-- Floating Navigation Menu -->
   <nav id="floating-nav" class="floating-nav">
     <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" aria-label="Scroll left">
