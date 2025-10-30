@@ -1,6 +1,7 @@
 # Dat's Personal Website <!-- omit in toc -->
 
 > Adapted from Neumorphism designed Jekyll theme for *this* personal websites, portfolios and resumes. I was able to learn and get intuitions for web designing, UX and UI considerations while imparting my own self-expression and preferences.
+> 
 [![Open Issues](https://badgen.net/github/open-issues/longpdo/neumorphism)](https://github.com/longpdo/neumorphism/issues)
 [![License](https://badgen.net/github/license/longpdo/neumorphism)](LICENSE)
 <a href="https://jekyll-themes.com">
