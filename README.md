@@ -48,8 +48,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- ACKNOWLEDGEMENTS -->
 
 ## Acknowledgements
-* Co-developed with [GitHub Copilot] (https://github.com/features/copilot)
-* Adapted [Neumorphism]([https://fontawesome.com/](https://github.com/longpdo/neumorphism?tab=readme-ov-file) template
+* Co-developed with [GitHub Copilot](https://github.com/features/copilot)
+* Adapted [Neumorphism](https://github.com/longpdo/neumorphism?tab=readme-ov-file) template
 * [Font Awesome](https://fontawesome.com/)
 * [Normalize.css](https://necolas.github.io/normalize.css/)
 * Based Preloader on [Codrin Pavel's](https://codepen.io/zerospree/pen/aCjAz) version
