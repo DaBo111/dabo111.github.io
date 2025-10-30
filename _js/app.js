@@ -539,11 +539,15 @@ function initBugReportModal() {
   bugReportBtn.addEventListener('click', function() {
     // Store the original overflow value
     originalBodyOverflow = document.body.style.overflow || '';
-    bugModal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
     
-    // Create the hidden iframe when modal opens
-    createHiddenIframe();
+    // Show modal and prevent background scrolling
+    bugModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Create iframe after modal is visible
+    setTimeout(function() {
+      createHiddenIframe();
+    }, 10);
   });
 
   // Handle form submission

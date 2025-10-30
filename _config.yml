@@ -105,17 +105,17 @@ blogs_view_mode: "by_year"
 # > Set to "all" to show all years by default, or specify a year like "2024"
 blogs_default_year: "all"
 
-# OPEN SOURCE PROJECTS SECTION
+# PROJECTS SECTION
 # show_opensource_card:
-# > setting this to true, will display the Open Source Projects section
-# > setting this to false, will omit the Open Source Projects section
+# > setting this to true, will display the Projects section
+# > setting this to false, will omit the Projects section
 show_opensource_card: true
 # show_os_projects:
 # > setting this to true, will display your public projects on github
 # > setting this to false, will omit your public projects on github
 show_os_projects: true
-# os_projects_title: The will be displayed as the title of your open source projects
-os_projects_title: Open Source Projects
+# os_projects_title: The will be displayed as the title of your projects
+os_projects_title: Projects
 
 # CONTACT SECTION
 # show_contact_card:
@@ -131,6 +131,9 @@ contact_description: If you want to get in touch, feel free to reach out via ema
 # Set this to your forked repository
 # > e.g. <user>/<user>.github.io
 repository: DaBo111/dabo111.github.io
+github_username: DaBo111
+github:
+  username: DaBo111
 projects:
   # sortby:
   # > set this to pushed, if you want to sort your github repositories by time.

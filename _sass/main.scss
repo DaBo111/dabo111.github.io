@@ -235,13 +235,13 @@ $primary-color: #2563eb;
   }
   
   .bug-modal-content {
-    margin: 2% auto;
     width: 95%;
     max-height: 90vh;
+    // Keep the transform centering on mobile too
   }
   
   .bug-modal-header {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem; // Reduced horizontal padding on mobile
     
     h2 {
       font-size: 1.3rem;
@@ -250,6 +250,18 @@ $primary-color: #2563eb;
   
   .bug-form-container {
     height: 600px; // Slightly shorter on mobile for better fit
+    padding: 16px; // Reduced padding on mobile
+  }
+  
+  #bug-report-form {
+    .form-group {
+      margin-bottom: 16px; // Reduce spacing on mobile
+      
+      input, textarea {
+        padding: 10px 12px; // Smaller padding on mobile
+        font-size: 16px; // Prevent zoom on iOS
+      }
+    }
   }
   
   .nav-menu {
@@ -511,16 +523,18 @@ $primary-color: #2563eb;
   z-index: 2000;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw; // Use viewport width instead of 100%
+  height: 100vh; // Use viewport height instead of 100%
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
 
 .bug-modal-content {
   background: $card-bg-color;
-  margin: 5% auto;
-  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // Perfect centering regardless of scrollbar
   border-radius: 16px;
   width: 90%;
   max-width: 700px;
@@ -575,14 +589,20 @@ $primary-color: #2563eb;
   flex: 1; // Take remaining space after header
   background: white;
   border-radius: 0 0 16px 16px;
-  overflow: auto; // Allow scrolling within container
+  overflow-y: scroll; // Always show vertical scrollbar to prevent content shift
+  overflow-x: hidden; // Hide horizontal scrollbar
   min-height: 500px; // Minimum height
   max-height: calc(85vh - 100px); // Account for header height
   padding: 24px;
+  
+  // Ensure consistent scrollbar behavior across browsers
+  scrollbar-gutter: stable;
 }
 
 #bug-report-form {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   
   .form-group {
     margin-bottom: 20px;
@@ -597,6 +617,7 @@ $primary-color: #2563eb;
     
     input, textarea {
       width: 100%;
+      max-width: 100%;
       padding: 12px 16px;
       border: 2px solid #e0e0e0;
       border-radius: 12px;
