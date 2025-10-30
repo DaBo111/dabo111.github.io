@@ -524,10 +524,13 @@ $primary-color: #2563eb;
   border-radius: 16px;
   width: 90%;
   max-width: 700px;
-  max-height: 85vh;
+  max-height: 90vh;
+  min-height: 75vh;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .bug-modal-header {
@@ -538,6 +541,7 @@ $primary-color: #2563eb;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: $card-bg-color;
   border-radius: 16px 16px 0 0;
+  flex-shrink: 0; // Prevent header from shrinking
   
   h2 {
     margin: 0;
@@ -568,10 +572,12 @@ $primary-color: #2563eb;
 
 .bug-form-container {
   width: 100%;
-  height: 736px; // Match Google Form's recommended height
+  flex: 1; // Take remaining space after header
   background: white;
   border-radius: 0 0 16px 16px;
-  overflow: hidden;
+  overflow: hidden; // No scrolling on container
+  display: flex;
+  flex-direction: column;
 }
 
 #bug-report-iframe {
@@ -579,6 +585,7 @@ $primary-color: #2563eb;
   height: 100%;
   border: none;
   background: white;
+  flex: 1; // Take all available space
 }
 
 /* General */
