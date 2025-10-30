@@ -62,12 +62,11 @@
 
   <!-- Google tag (gtag.js) -->
   {% if site.google-analytics %}
-  <script>
-    var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-    if (dnt != "1" && dnt != "yes") {
-  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-analytics.id }}"></script>
   <script>
+    // Check for Do Not Track preference
+    var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+    if (dnt != "1" && dnt != "yes") {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

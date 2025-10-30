@@ -1,5 +1,13 @@
 {% if site.show_os_projects %}
   <h1 class="title">{{site.os_projects_title}}</h1>
+  
+  <!-- Project Category Filters -->
+  <div class="project-filters">
+    <button class="project-filter-btn active" data-category="all">All</button>
+    <button class="project-filter-btn" data-category="others">Others</button>
+    <!-- Additional categories will be added dynamically -->
+  </div>
+  
   {% if site.projects.sort_by == 'stars' %}
     {% assign sort_order = 'stargazers_count', 'last' %}
   {% else %}
@@ -7,11 +15,19 @@
   {% endif %}
 
   {% if site.projects.exclude.archived && site.projects.exclude.forks %}
-    {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
+    {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
+    {% assign filtered_repos = filtered_repos | where:'fork', false %}
+    {% comment %} Include template repositories even if they're marked as forks {% endcomment %}
+    {% assign template_repos = site.github.public_repositories | where:'is_template', true | where:'archived', false %}
+    {% assign filtered_repos = filtered_repos | concat: template_repos | uniq %}
   {% elsif site.projects.exclude.archived %}
     {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
   {% elsif site.projects.exclude.forks %}
-    {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
+    {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
+    {% assign filtered_repos = filtered_repos | where:'fork', false %}
+    {% comment %} Include template repositories even if they're marked as forks {% endcomment %}
+    {% assign template_repos = site.github.public_repositories | where:'is_template', true | where:'archived', false %}
+    {% assign filtered_repos = filtered_repos | concat: template_repos | uniq %}
   {% else %}
     {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
   {% endif %}
@@ -19,9 +35,50 @@
   <div class="projects-wrapper">
     {% for repository in filtered_repos %}
       {% unless site.projects.exclude.projects contains repository.name %}
-        <div class="project neumorphism-card" data-aos="zoom-in-down">
+        {% assign project_data = site.data.project_titles[repository.name] %}
+        
+        {% comment %} Handle different data formats and apply defaults {% endcomment %}
+        {% if project_data.title or project_data.description or project_data.image or project_data.category %}
+          {% comment %} New format: object with properties {% endcomment %}
+          {% assign custom_title = project_data.title | default: repository.name %}
+          {% assign custom_description = project_data.description | default: repository.description %}
+          {% assign custom_image = project_data.image %}
+          {% assign custom_category = project_data.category | default: "Others" %}
+        {% elsif project_data %}
+          {% comment %} Old format: string title only {% endcomment %}
+          {% assign custom_title = project_data %}
+          {% assign custom_description = repository.description %}
+          {% assign custom_image = nil %}
+          {% assign custom_category = "Others" %}
+        {% else %}
+          {% comment %} No custom data available - use all defaults {% endcomment %}
+          {% assign custom_title = repository.name %}
+          {% assign custom_description = repository.description %}
+          {% assign custom_image = nil %}
+          {% assign custom_category = "Others" %}
+        {% endif %}
+        
+        {% assign display_category = custom_category %}
+        
+        <div class="project neumorphism-card{% if custom_image %} project-with-image{% endif %}" data-aos="zoom-in-down" data-category="{{ display_category | downcase | replace: ' ', '-' }}">
+          
+          <!-- Top left: Category info (like research publication-info) -->
+          <div class="project-header">
+            <div class="category-info">
+              <span class="category-icon" title="{{ display_category }}">📁</span>
+              <span class="category-label">{{ display_category }}</span>
+            </div>
+          </div>
+          
+          <!-- Top right: Project image -->
+          {% if custom_image %}
+          <div class="project-image">
+            <img src="{{ custom_image }}" alt="{{ custom_title }}" loading="lazy">
+          </div>
+          {% endif %}
+          
           <div class="name-link-wrapper">
-            <h3>{{ repository.name }}</h3>
+            <h3>{{ custom_title }}</h3>
             <div class="links">
               {% if repository.stargazers_count != 0 %}
                 <a href="{{ repository.html_url }}/stargazers" class="project-stars-forks">
@@ -42,15 +99,25 @@
               {% endif %}
             </div>
           </div>
-          <p class="project-desc">{{repository.description}}</p>
-          {% if repository.homepage != "" and repository.homepage != nil %}
-            <a class="highlight-link" href="{{repository.homepage}}" target="_blank" rel="noreferrer">
-              Demo
+          
+          <!-- Description (full text, no expand/collapse) -->
+          <div class="project-desc-wrapper">
+            <p class="project-desc">
+              {{ custom_description | default: repository.description }}
+            </p>
+          </div>
+          
+          <div class="project-links">
+            {% if repository.homepage != "" and repository.homepage != nil %}
+              <a class="highlight-link" href="{{repository.homepage}}" target="_blank" rel="noreferrer">
+                Demo
+              </a>
+            {% endif %}
+            <a class="highlight-link" href="{{repository.html_url}}" target="_blank" rel="noreferrer">
+              Github
             </a>
-          {% endif %}
-          <a class="highlight-link" href="{{repository.html_url}}" target="_blank" rel="noreferrer">
-            Github
-          </a>
+          </div>
+          
           {% if repository.topics %}
             <div class="tag-wrapper">
               {% for topic in repository.topics %}

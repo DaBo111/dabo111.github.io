@@ -1,0 +1,25 @@
+# Map repository names to custom titles, descriptions, images, and categories
+# Format:
+# repository-name:
+#   title: "Custom Title"
+#   description: "Custom description for your project"
+#   image: "/assets/img/projects/project-name.png" # Path to project image
+#   category: "Web Development" # Project category for filtering
+# 
+# Or for title only (backward compatibility):
+# repository-name: "Custom Title"
+
+dabo111.github.io:
+  title: "Personal Website"
+  description: "Adapted from Neumorphism designed Jekyll theme for *this* personal website. I was able to learn and acquire intuitions for web design, UX and UI considerations while imparting my own self-expressions and preferences."
+  image: "/assets/img/projects/personal_web.png"
+  category: "Others"
+
+# Add more repositories here as they appear in your projects
+# example-repo:
+#   title: "Your Custom Project Title"
+#   description: "Detailed description of what this project does and the technologies used"
+#   image: "/assets/img/projects/example-project.png"
+#   category: "Mobile Apps"
+# 
+# another-project: "Simple Title Only" # This format still works for backward compatibility

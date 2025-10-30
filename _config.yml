@@ -164,6 +164,16 @@ google-analytics:
 
 plugins:
   - "jekyll-github-metadata"
+  - "jekyll-sitemap"
+
+# Sitemap configuration
+sitemap:
+  include_posts:
+    - "/index.html"
+  changefreqs:
+    - "daily"
+  priorities:
+    - 1.0
 
 exclude:
   [

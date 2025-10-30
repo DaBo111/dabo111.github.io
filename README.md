@@ -1,6 +1,6 @@
 # Dat's Personal Glassmorphism Website <!-- omit in toc -->
 
-> Adapted from Neumorphism designed Jekyll theme for *this* personal websites, portfolios and resumes. I was able to learn and get intuitions for web design, UX and UI considerations while imparting my own self-expressions and preferences.
+> Adapted from Neumorphism designed Jekyll theme for *this* personal websites. I was able to learn and acquire intuitions for web design, UX and UI considerations while imparting my own self-expressions and preferences.
 > 
 
 [![License](https://badgen.net/github/license/longpdo/neumorphism)](LICENSE)

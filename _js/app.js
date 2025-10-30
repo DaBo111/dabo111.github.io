@@ -768,3 +768,103 @@ function handleFormSubmit() {
     }, 3000);
   }
 }
+
+// Project Category Filtering
+function initProjectFilters() {
+  const filterButtons = document.querySelectorAll('.project-filters .project-filter-btn');
+  const projects = document.querySelectorAll('.project[data-category]');
+  
+  if (filterButtons.length === 0 || projects.length === 0) {
+    return; // No filters or projects found
+  }
+  
+  // Add click event listeners to filter buttons
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
+      
+      // Update active state (only within project filters)
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter projects
+      filterProjects(category);
+    });
+  });
+  
+  // Collect all unique categories from projects and add them to filters
+  const categories = new Set();
+  projects.forEach(project => {
+    const category = project.getAttribute('data-category');
+    if (category && category !== 'others') {
+      // Convert from slug back to display format
+      const displayCategory = category.split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ');
+      categories.add(displayCategory);
+    }
+  });
+  
+  // Add category buttons dynamically (after "Others" button)
+  const filtersContainer = document.querySelector('.project-filters');
+  const othersButton = document.querySelector('.project-filters .project-filter-btn[data-category="others"]');
+  
+  categories.forEach(category => {
+    if (category.toLowerCase() !== 'others') {
+      const categorySlug = category.toLowerCase().replace(/\s+/g, '-');
+      
+      // Check if button already exists
+      if (!document.querySelector(`.project-filters [data-category="${categorySlug}"]`)) {
+        const button = document.createElement('button');
+        button.className = 'project-filter-btn';
+        button.setAttribute('data-category', categorySlug);
+        button.textContent = category;
+        
+        // Add click listener
+        button.addEventListener('click', function() {
+          const category = this.getAttribute('data-category');
+          
+          // Update active state (only within project filters)
+          const projectFilterButtons = document.querySelectorAll('.project-filters .project-filter-btn');
+          projectFilterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter projects
+          filterProjects(category);
+        });
+        
+        // Insert before "Others" button if it exists, otherwise append
+        if (othersButton) {
+          filtersContainer.insertBefore(button, othersButton);
+        } else {
+          filtersContainer.appendChild(button);
+        }
+      }
+    }
+  });
+}
+
+function filterProjects(category) {
+  const projects = document.querySelectorAll('.project[data-category]');
+  
+  projects.forEach(project => {
+    const projectCategory = project.getAttribute('data-category');
+    
+    if (category === 'all' || projectCategory === category) {
+      project.style.display = 'flex'; // Use flex to match CSS
+      // Add fade-in animation
+      project.style.opacity = '0';
+      setTimeout(() => {
+        project.style.opacity = '1';
+      }, 50);
+    } else {
+      project.style.display = 'none';
+    }
+  });
+}
+
+// Initialize project filters when DOM is ready
+$(document).ready(function() {
+  // Small delay to ensure all elements are rendered
+  setTimeout(initProjectFilters, 100);
+});

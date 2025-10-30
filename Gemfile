@@ -4,4 +4,5 @@ gem "dotenv"
 gem "github-pages"
 gem "jekyll"
 gem "jekyll-github-metadata"
+gem "jekyll-sitemap"
 gem 'rails', '5.2.6'
